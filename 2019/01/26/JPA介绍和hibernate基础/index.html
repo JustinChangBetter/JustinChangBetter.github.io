@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="常琪的博客">
+    <meta name="keyword" content="JustinChang">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        JPA介绍和hibernate基础 - Justin`s blogs
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Everything about him was old except his eyes and they were the same color as the sea and were cheerful and undefeated. </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/Justin.jpg">
+        </div>
+        <div class="name">
+            <i>Justin Chang</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>HOME</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>TAGS</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>ARCHIVES</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>ABOUT</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>SEARCH</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JPA介绍和hibernate基础"><span class="toc-text">JPA介绍和hibernate基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-ORM框架"><span class="toc-text">一,  ORM框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-JPA介绍"><span class="toc-text">二,  JPA介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-hibernate"><span class="toc-text">三, hibernate</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">search</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> Everything about him was old except his eyes and they were the same color as the sea and were cheerful and undefeated. </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        JPA介绍和hibernate基础
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">Post：<span>2019-01-26 17:13:41</span></span>
+        
+        <span class="attr">Tags：/
+        
+        <a class="tag" href="/tags/#-JPA -hibernate" title="-JPA -hibernate">-JPA -hibernate</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">Visit：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <h1 id="JPA介绍和hibernate基础"><a href="#JPA介绍和hibernate基础" class="headerlink" title="JPA介绍和hibernate基础"></a>JPA介绍和hibernate基础</h1><h2 id="一-ORM框架"><a href="#一-ORM框架" class="headerlink" title="一,  ORM框架"></a>一,  ORM框架</h2><ol>
+<li>ORM(Object Relational Mapping)是一种软件开发的思想,主要针对持久层:<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">O</span>    <span class="literal">-</span><span class="literal">-</span>&gt;     <span class="comment">Object</span>      <span class="literal">-</span><span class="literal">-</span>&gt;   <span class="comment">对象</span></span><br><span class="line"><span class="comment">R</span>    <span class="literal">-</span><span class="literal">-</span>&gt;     <span class="comment">Relational</span>      <span class="literal">-</span><span class="literal">-</span>&gt;   <span class="comment">关系表</span></span><br><span class="line"><span class="comment">M</span>    <span class="literal">-</span><span class="literal">-</span>&gt;     <span class="comment">Mapping</span>     <span class="literal">-</span><span class="literal">-</span>&gt;   <span class="comment">映射</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li><p>ORM的作用:<br>2.1 让开发人员不再关注SQL语句<br>2.2 操作类就是操作表<br>2.3 隐藏了不同数据库之间的语法差异,配置方言即可</p>
+</li>
+<li><p>实现了ORM思想的框架我们称之为ORM框架</p>
+</li>
+</ol>
+<hr>
+<h2 id="二-JPA介绍"><a href="#二-JPA介绍" class="headerlink" title="二,  JPA介绍"></a>二,  JPA介绍</h2><ol>
+<li>JPA 是sun公司提供的一套ORM框架的规范,即一套接口,第三方框架可以实现该接口来编写ORM框架实现,而我们开发人员只需要关注JPA接口的API即可,典型的面向接口开发;</li>
+<li>hibernate框架是JPA接口的实现;</li>
+</ol>
+<hr>
+<h2 id="三-hibernate"><a href="#三-hibernate" class="headerlink" title="三, hibernate"></a>三, hibernate</h2><ol>
+<li><p>hibernate与mybatis的优劣势比较:<br>1.1 运行效率对比:  hibernate框架底层使用反射机制来读取映射对象类的注解信息,每次进行数据库的操作都会根据映射类的信息,在代码运行期间动态生成SQL语句,这样显然和直接写好SQL语句对比起来性能上差很多.  而mybatis则是先配置好SQL语句,开发人员调用方法,框架直接取预先根据配置文件生成好的SQL执行即可,显然在这方面性能上好很多;<br>1.2 使用简易程度:   虽然hibernate框架在程序执行效率上有所牺牲,但是它的使用简易程度和方便性却很高,开发人员只需要关注映射类即可,不用关注SQL语句;</p>
+</li>
+<li><p>使用hibernate框架搭建持久层<br>2.1 创建一个maven工程,引入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- hibernate 对 jpa 的支持包 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-entitymanager<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.0.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- c3p0 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.hibernate<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hibernate-c3p0<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.0.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Mysql --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- log 日志 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.17<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>2.2 创建一个持久化的类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* * 所有的注解都是使用 JPA 的规范提供的注解，</span></span><br><span class="line"><span class="comment">* * 所以在导入注解包的时候，一定要导入 javax.persistence 下的</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Entity</span> <span class="comment">//声明实体类</span></span><br><span class="line"><span class="meta">@Table</span>(name=<span class="string">"cst_customer"</span>) <span class="comment">//建立实体类和表的映射关系</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> </span>&#123;</span><br><span class="line">    <span class="comment">//声明当前私有属性为主键</span></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="comment">//配置主键的生成策略,IDENTITY是数据库的自增</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy=GenerationType.IDENTITY) </span><br><span class="line">    <span class="meta">@Column</span>(name=<span class="string">"cust_id"</span>) <span class="comment">//指定和表中 cust_id 字段的映射关系</span></span><br><span class="line">    <span class="keyword">private</span> Long custId;</span><br><span class="line">    <span class="meta">@Column</span>(name=<span class="string">"cust_name"</span>) <span class="comment">//指定和表中 cust_name 字段的映射关系</span></span><br><span class="line">    <span class="keyword">private</span> String custName;</span><br><span class="line">    <span class="meta">@Column</span>(name=<span class="string">"cust_source"</span>)<span class="comment">//指定和表中 cust_source 字段的映射关系</span></span><br><span class="line">    <span class="keyword">private</span> String custSource;</span><br><span class="line">    <span class="meta">@Column</span>(name=<span class="string">"cust_industry"</span>)<span class="comment">//指定和表中 cust_industry 字段的映射关系</span></span><br><span class="line">    <span class="keyword">private</span> String custIndustry;</span><br><span class="line">    <span class="meta">@Column</span>(name=<span class="string">"cust_level"</span>)<span class="comment">//指定和表中 cust_level 字段的映射关系</span></span><br><span class="line">    <span class="keyword">private</span> String custLevel;</span><br><span class="line">    <span class="meta">@Column</span>(name=<span class="string">"cust_address"</span>)<span class="comment">//指定和表中 cust_address 字段的映射关系</span></span><br><span class="line">    <span class="keyword">private</span> String custAddress;</span><br><span class="line">    <span class="meta">@Column</span>(name=<span class="string">"cust_phone"</span>)<span class="comment">//指定和表中 cust_phone 字段的映射关系</span></span><br><span class="line">    <span class="keyword">private</span> String custPhone;</span><br><span class="line">    <span class="comment">//get() set()方法略。。。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.3 注解说明<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@Entity</span>   ：指定当前类是实体类。</span><br><span class="line"><span class="variable">@Table</span>    ：指定实体类和表之间的对应关系。</span><br><span class="line">            属性：</span><br><span class="line">            name：指定数据库表的名称</span><br><span class="line"><span class="variable">@Id</span>       ：指定当前字段是主键。</span><br><span class="line"><span class="variable">@GeneratedValue</span>     ：指定主键的生成方式。。</span><br><span class="line">                    属性：</span><br><span class="line">                    strategy ：指定主键生成策略。</span><br><span class="line">                    generator：指定引用 hibernate 中声明的主键策略</span><br><span class="line"><span class="variable">@Column</span>    ：指定实体类属性和数据库表之间的对应关系</span><br><span class="line">            属性：</span><br><span class="line">            name：指定数据库表的列名称。</span><br><span class="line">            unique：是否唯一</span><br><span class="line">            nullable：是否可以为空</span><br><span class="line">            inserttable：是否可以插入</span><br><span class="line">            updateable：是否可以更新</span><br><span class="line">            <span class="attribute">columnDefinition</span>: 定义建表时创建此列的 DDL</span><br><span class="line">            <span class="attribute">secondaryTable</span>: 从表名。如果此列不建在主表上（默认建在主表），该属性定义该列所在从表的名</span><br></pre></td></tr></table></figure></p>
+<p>2.4 创建JPA核心配置类<br>注意：在 maven 工程的 resources 路径下创建一个名为 META-INF 的文件夹，在此文件夹下创建一个名为<br>persistence.xml 的配置文件。META-INF 文件夹名称不能修改。 persistence.xml 文件名称不能改<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">persistence</span> <span class="attr">xmlns</span>=<span class="string">"http://java.sun.com/xml/ns/persistence"</span></span></span><br><span class="line"><span class="tag"><span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag"><span class="attr">xsi:schemaLocation</span>=<span class="string">"http://java.sun.com/xml/ns/persistence</span></span></span><br><span class="line"><span class="tag"><span class="string">http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"</span></span></span><br><span class="line"><span class="tag"><span class="attr">version</span>=<span class="string">"2.0"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--persistence-unit 配置持久化单元 可以配置多个--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--name：持久化单元名称</span></span><br><span class="line"><span class="comment">transaction-type：事务类型</span></span><br><span class="line"><span class="comment">RESOURCE_LOCAL：本地事务管理</span></span><br><span class="line"><span class="comment">JTA：分布式事务管理 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">persistence-unit</span> <span class="attr">name</span>=<span class="string">"myJpa"</span> <span class="attr">transaction-type</span>=<span class="string">"RESOURCE_LOCAL"</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--配置 JPA 规范的服务提供商 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">provider</span>&gt;</span>org.hibernate.jpa.HibernatePersistenceProvider<span class="tag">&lt;/<span class="name">provider</span>&gt;</span></span><br><span class="line">      	<span class="comment">&lt;!--配置持久化类--&gt;</span></span><br><span class="line">      	<span class="tag">&lt;<span class="name">class</span>&gt;</span>com.itheima.po.Customer<span class="tag">&lt;/<span class="name">class</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 数据库驱动 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"javax.persistence.jdbc.driver"</span> <span class="attr">value</span>=<span class="string">"com.mysql.jdbc.Driver"</span> /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 数据库地址 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"javax.persistence.jdbc.url"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">value</span>=<span class="string">"jdbc:mysql://localhost:3306/day01"</span> /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 数据库用户名 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"javax.persistence.jdbc.user"</span> <span class="attr">value</span>=<span class="string">"root"</span> /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 数据库密码 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"javax.persistence.jdbc.password"</span> <span class="attr">value</span>=<span class="string">"123456"</span> /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--jpa 提供者的可选配置：我们的 JPA 规范的提供者为 hibernate，所以 jpa 的核心配</span></span><br><span class="line"><span class="comment">        置中兼容 hibernate 的配 --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 显示SQL --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.show_sql"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 格式化SQL --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.format_sql"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 自动创建表 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.hbm2ddl.auto"</span> <span class="attr">value</span>=<span class="string">"update"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">persistence-unit</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">persistence</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>2.5 编写一个基本的测试类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSave</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 创建实体管理类工厂，使用 Persistence 的静态方法获取</span></span><br><span class="line"><span class="comment">    * 其中传递的参数为持久化单元名称，需要 jpa 配置文件中指定</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    EntityManagerFactory factory = Persistence.createEntityManagerFactory(<span class="string">"myJpa"</span>);</span><br><span class="line">    <span class="comment">//创建实体管理类</span></span><br><span class="line">    EntityManager em = factory.createEntityManager();</span><br><span class="line">    <span class="comment">//获取事务对象</span></span><br><span class="line">    EntityTransaction tx = em.getTransaction();</span><br><span class="line">    <span class="comment">//开启事务</span></span><br><span class="line">    tx.begin();</span><br><span class="line">    <span class="comment">//创建要操作的对象</span></span><br><span class="line">    Customer customer = <span class="keyword">new</span> Customer();</span><br><span class="line">    c.setCustName(<span class="string">"传智播客"</span>);</span><br><span class="line">    <span class="comment">//保存操作</span></span><br><span class="line">    em.persist(customer);</span><br><span class="line">    <span class="comment">//提交事务</span></span><br><span class="line">    tx.commit();</span><br><span class="line">    <span class="comment">//释放资源</span></span><br><span class="line">    em.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.6 基本的api介绍:<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基本的增删改查</span></span><br><span class="line">entityManager.persistence(Object o);   <span class="comment">//新增</span></span><br><span class="line">entityManager.<span class="keyword">merge</span>(Object o);  <span class="comment">//修改</span></span><br><span class="line">entityManager.remove(Object o);  <span class="comment">//删除</span></span><br><span class="line">entityManager.find(Object o);    <span class="comment">//查询</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//条件查询</span></span><br><span class="line">String sql = <span class="string">"form Customer where custName like ? and  ....."</span>;     <span class="comment">//创建条件语句</span></span><br><span class="line"><span class="keyword">Query</span> <span class="keyword">query</span>  = entityManager.createQuery(sql);      <span class="comment">//创建Query对象</span></span><br><span class="line"><span class="keyword">query</span>.setParameter(int index, Object value);    <span class="comment">//设置sql语句中的参数</span></span><br><span class="line"><span class="keyword">List</span> <span class="keyword">list</span> = <span class="keyword">query</span>.getResultList();    <span class="comment">//返回结果集</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//排序</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建 query 对象</span></span><br><span class="line">    String jpql = <span class="string">"from Customer order by custId desc"</span>;</span><br><span class="line">    <span class="keyword">Query</span> <span class="keyword">query</span> = em.createQuery(jpql);</span><br><span class="line">    <span class="comment">// 查询并得到返回结果</span></span><br><span class="line">    <span class="keyword">List</span>&lt;Customer&gt; <span class="keyword">list</span> = <span class="keyword">query</span>.getResultList(); <span class="comment">// 得到集合返回类型</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//分页</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建 query 对象</span></span><br><span class="line">    String jpql = <span class="string">"from Customer"</span>;</span><br><span class="line">    <span class="keyword">Query</span> <span class="keyword">query</span> = em.createQuery(jpql);</span><br><span class="line">    <span class="comment">//起始索引</span></span><br><span class="line">    <span class="keyword">query</span>.setFirstResult(0);</span><br><span class="line">	<span class="comment">//每页显示条数</span></span><br><span class="line">	<span class="keyword">query</span>.setMaxResults(2)</span><br><span class="line">    <span class="comment">// 查询并得到返回结果</span></span><br><span class="line">    <span class="keyword">List</span>&lt;Customer&gt; <span class="keyword">list</span> = <span class="keyword">query</span>.getResultList(); <span class="comment">// 得到集合返回类型</span></span><br></pre></td></tr></table></figure></p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
